@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 🐼🩷</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffb6c1, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Courier New", monospace;
+    overflow: hidden;
+}
+
+/* Floating pixel hearts */
+.heart {
+    position: absolute;
+    color: #ffb6c1;
+    font-size: 14px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.card {
+    position: relative;
+    background: rgba(0,0,0,0.9);
+    color: #ffb6c1;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 720px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 35px #ffb6c1;
+    z-index: 10;
+}
+
+/* Pixel panda */
+.panda {
+    position: absolute;
+    top: -70px;
+    left: 20px;
+    width: 64px;
+    height: 64px;
+    background:
+        linear-gradient(#000 0 0) 16px 16px/16px 16px,
+        linear-gradient(#000 0 0) 32px 16px/16px 16px,
+        linear-gradient(#000 0 0) 16px 32px/16px 16px,
+        linear-gradient(#000 0 0) 32px 32px/16px 16px,
+        linear-gradient(#fff 0 0) 24px 24px/16px 16px;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    animation: pandaJump 2.5s infinite ease-in-out;
+}
+
+@keyframes pandaJump {
+    0% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(180px) translateY(-40px); }
+    50% { transform: translateX(360px) translateY(0); }
+    75% { transform: translateX(180px) translateY(-40px); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+#storyText {
+    font-size: 18px;
+    line-height: 1.7;
+    white-space: pre-line;
+    min-height: 220px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    background: #ffb6c1;
+    color: #000;
+}
+
+button:hover {
+    background: #fff;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+for (let i = 0; i < 30; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+<div class="card">
+    <div class="panda"></div>
+
+    <h2>Assalamualaikum 🩷</h2>
+
+    <p id="storyText"></p>
+
+    <div>
+        <button onclick="prevPage()">⬅ Previous</button>
+        <button onclick="nextPage()">Next ➡</button>
+    </div>
+</div>
+
+<script>
+const pages = [
+`Assalamualaikum.
+This new day of this new year feels special in a way I can’t fully explain,
+because it begins with us.
+When I think about the future,
+it’s not a place or a dream I imagine first —
+it’s you beside me.`,
+
+`I want us to stay together always,
+to grow old hand in hand as hubby and wifeyy,
+sharing every joy, every struggle,
+and every quiet moment in between.
+You are loyal, humble, kind,
+and incredibly caring,
+and your affection and happiness
+mean more to me than anything else.`,
+
+`Sometimes we fight over silly things,
+sometimes words hurt more than they should,
+but even in those moments,
+my heart never chooses distance —
+it chooses you.
+We fall, we learn, we heal,
+and we come back stronger,
+proving our love is deeper
+than our misunderstandings.`,
+
+`I don’t want a perfect relationship;
+I want a real one —
+with honesty, effort, patience,
+and a love that refuses to give up.
+No matter how hard life gets
+or how much the world changes,
+I want you to be my constant,
+my safe place, my forever.
+This isn’t just love for today —
+this is a lifetime promise.`,
+
+`I work hard every single day,
+not just for myself, but for our future.
+Every effort I make,
+every struggle I face,
+every step I take to become better —
+it’s all for you.
+I don’t love you casually;
+I love you with intention,
+responsibility, and a future in mind.`,
+
+`One day, I will stand confidently
+in front of your mom,
+look her in the eyes,
+and ask for your hand —
+not just with words,
+but with proof of my dedication,
+my growth, and my loyalty.
+I want her to see that her daughter
+is loved deeply, respected endlessly,
+and protected always.`,
+
+`From the deepest part of my heart,
+thank you.
+You changed me in ways
+I never thought were possible.
+You turned a lost soul
+into someone who wants to be better.
+I promise you this:
+I will succeed — not just for myself,
+but for us.
+You didn’t just change my life;
+you gave it direction,
+and I’ll spend my lifetime proving
+your love was never in vain ❤️`
+];
+
+let currentPage = 0;
+const textEl = document.getElementById("storyText");
+
+function showPage() {
+    textEl.innerText = pages[currentPage];
+}
+
+function nextPage() {
+    if (currentPage < pages.length - 1) {
+        currentPage++;
+        showPage();
+    }
+}
+
+function prevPage() {
+    if (currentPage > 0) {
+        currentPage--;
+        showPage();
+    }
+}
+
+showPage();
+</script>
+
+</body>
+</html>
